@@ -113,6 +113,7 @@ namespace :pg do
       end
     end
     after 'pg:install_config_files', 'pg:check:file_permissions'
+    after 'pg:install_slave_config_files', 'pg:check:file_permissions'
 
     task :firewall => ['pg:ensure_setup', 'postgresinator:deployment_user'] do
       on roles(:db, :db_slave, :in => :parallel) do |host|

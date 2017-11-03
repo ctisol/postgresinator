@@ -1,5 +1,6 @@
 set :postgres_templates_path,           "templates/postgres"
 set :postgres_config_files,             ["postgresql.conf", "pg_hba.conf"]
+set :postgres_slave_config_files,       ["postgresql_slave.conf", "pg_hba.conf"]
 set :postgres_recovery_conf,            ["recovery.conf"]
 set :postgres_root_path,                -> { shared_path.join('postgres', fetch(:stage).to_s) }
 set :postgres_data_path,                -> { fetch(:postgres_root_path).join('data') }
