@@ -108,7 +108,7 @@ namespace :pg do
           unless test "diff", "-q", "/tmp/#{config_file}.file", "#{fetch(:postgres_config_path)}/#{config_file}"
             warn "Config file #{config_file} on #{host} is being updated."
             execute("cp", "/tmp/#{config_file}.file", "#{fetch(:postgres_config_path)}/#{config_file}")
-          #  execute("mv", "#{fetch(:postgres_config_path)}/#{postgresql_slave.conf}", "#{fetch(:postgres_config_path)}/#{postgresql.conf}")
+            execute("mv", "#{fetch(:postgres_config_path)}/postgresql_slave.conf", "#{fetch(:postgres_config_path)}/postgresql.conf")
             host.properties.set :config_file_changed, true
           end
           execute "rm", "/tmp/#{config_file}.file"
